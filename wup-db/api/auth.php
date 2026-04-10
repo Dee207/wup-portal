@@ -31,7 +31,7 @@ switch ($action) {
 
         // Generate session token
         $token   = bin2hex(random_bytes(32));
-        $expires = date('Y-m-d H:i:s', strtotime('+8 hours'));
+        $expires = date("Y-m-d H:i:s", strtotime("+12 hours"));
 
         $db->prepare('UPDATE users SET session_token = ?, token_expires = ? WHERE id = ?')
            ->execute([$token, $expires, $user['id']]);
