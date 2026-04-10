@@ -124,6 +124,8 @@ switch ($method) {
 
        if (!$title || !$content) error("Title and content are required.");
        if (strlen($title) > 255) error("Title is too long. Maximum 255 characters allowed.");
+       if (strlen($content) < 10) error("Content is too short. Please write at least 10 characters.");
+       
         $allowed_cats = ['event','exam','notice','activity','holiday'];
         $allowed_auds = ['all','student','teacher','parent','staff'];
         if (!in_array($category, $allowed_cats)) error('Invalid category.');
