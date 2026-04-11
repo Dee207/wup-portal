@@ -18,7 +18,7 @@ if (empty($_FILES['image'])) error('No file uploaded.');
 
 $file    = $_FILES['image'];
 $maxSize = 5 * 1024 * 1024; // 5 MB
-$allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+$allowed ['image/jpeg', 'image/png', 'image/gif', 'Image/webp', 'image/avif'];
 
 if ($file['error'] !== UPLOAD_ERR_OK)  error('Upload error: ' . $file['error']);
 if ($file['size'] > $maxSize)          error('File too large. Max 5 MB.');
@@ -31,13 +31,15 @@ $uploadDir = __DIR__ . '/../assets/uploads/';
 if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
 
 // Generate unique filename
-$ext      = match($mime) {
+$ext = match($mime) {
     'image/jpeg' => 'jpg',
     'image/png'  => 'png',
     'image/gif'  => 'gif',
     'image/webp' => 'webp',
+    'image/avif' => 'avif',
     default      => 'jpg'
 };
+
 $filename = 'img_' . $user['id'] . '_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
 $destPath = $uploadDir . $filename;
 
