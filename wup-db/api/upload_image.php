@@ -10,9 +10,9 @@ setHeaders();
 $user = requireAuth();
 
 // Only admins can upload announcement images
-if ($user['role'] !== 'admin') error('Only admins can upload images.', 403);
+if (!in array($user['role'], ['admin', 'teacher'])) error("Only admins and teachers can upload images., 403);
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') error('Method not allowed.', 405);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') error('Method not allowed.', 403);
 
 if (empty($_FILES['image'])) error('No file uploaded.');
 
