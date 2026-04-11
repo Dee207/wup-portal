@@ -18,7 +18,8 @@ switch ($action) {
         $email = trim($body['email'] ?? '');
         $pass  = $body['password'] ?? '';
 
-        if (!$email || !$pass) error('Email and password are required.');
+        if (!$email || !$pass ) error ('Email and password are required.'):
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) error('Invalid Email Format.');
 
         $db   = getDB();
         $stmt = $db->prepare('SELECT * FROM users WHERE email = ? AND status = "active" LIMIT 1');
