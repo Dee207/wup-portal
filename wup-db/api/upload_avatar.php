@@ -18,7 +18,7 @@ $maxSize = 5 * 1024 * 1024; // 3 MB
 $allowed = ['image/jpeg','image/png','image/gif','image/webp'];
 
 if ($file['error'] !== UPLOAD_ERR_OK)  error('Upload error.');
-if ($file['size'] > $maxSize)          error('File too large. Max 3 MB.');
+if ($file['size'] > $maxSize)          error('File too large. Maximum allowed size is 5 MB.');
 if (!in_array(mime_content_type($file['tmp_name']), $allowed)) error('Only JPG, PNG, GIF, or WebP allowed.');
 
 // Ensure avatars directory exists
