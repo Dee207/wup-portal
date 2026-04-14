@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') error('Method not allowed.', 405);
 if (empty($_FILES['avatar'])) error('No file uploaded.');
 
 $file    = $_FILES['avatar'];
-$maxSize = 3 * 1024 * 1024; // 3 MB
+$maxSize = 5 * 1024 * 1024; // 3 MB
 $allowed = ['image/jpeg','image/png','image/gif','image/webp'];
 
 if ($file['error'] !== UPLOAD_ERR_OK)  error('Upload error.');
