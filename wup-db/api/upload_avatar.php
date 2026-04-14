@@ -15,7 +15,7 @@ if (empty($_FILES['avatar'])) error('No file uploaded.');
 
 $file    = $_FILES['avatar'];
 $maxSize = 5 * 1024 * 1024; // 3 MB
-$allowed = ['image/jpeg','image/png','image/gif','image/webp'];
+$allowed = ['image/jpeg','image/png','image/gif','image/webp', 'image/avif'];
 
 if ($file['error'] !== UPLOAD_ERR_OK)  error('Upload error.');
 if ($file['size'] > $maxSize)          error('File too large. Maximum allowed size is 5 MB.');
